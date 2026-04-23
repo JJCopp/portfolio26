@@ -1,66 +1,125 @@
-import { Link } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 
-import { useState } from 'react'
-import { Home, Menu, X } from 'lucide-react'
+const navigation = [
+  { href: '#work', label: 'Work' },
+  { href: '#strengths', label: 'What I Ship' },
+  { href: '#about', label: 'Background' },
+  { href: '#contact', label: 'Contact' },
+]
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   return (
     <>
-      <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">
-            <img
-              src="/tanstack-word-logo-white.svg"
-              alt="TanStack Logo"
-              className="h-10"
-            />
-          </Link>
-        </h1>
+      <header className="sticky top-0 z-50 border-b border-black/10 bg-[rgba(241,232,220,0.82)] backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
+          <a href="#top" className="min-w-0">
+            <span className="block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-[#7c6655] [font-family:var(--font-mono)]">
+              Phoenix / Product Engineer
+            </span>
+            <span className="mt-2 block text-[1.08rem] leading-none font-semibold tracking-[-0.05em] text-[#11110f] sm:text-[1.16rem]">
+              James <span className="text-[#d64d1c]">Coppinger</span>
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-7 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[#584b3f] [font-family:var(--font-mono)] md:flex">
+            {navigation.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="transition-colors duration-200 hover:text-[#11110f]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden md:block">
+            <a
+              href="https://github.com/JJCopp"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#11110f] px-5 py-3 text-sm font-semibold text-[#f4eadb] transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              Open GitHub
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          <button
+            onClick={() => setIsOpen(true)}
+            className="inline-flex h-11 w-11 items-center justify-center border border-black/10 bg-white/70 text-[#11110f] transition-colors duration-200 hover:border-[#11110f] md:hidden"
+            aria-label="Open navigation"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        </div>
       </header>
 
+      <div
+        className={`fixed inset-0 z-40 bg-[#11110f]/45 backdrop-blur-sm transition-opacity duration-300 ${
+          isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        aria-hidden="true"
+        onClick={() => setIsOpen(false)}
+      />
+
       <aside
-        className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-sm transform flex-col bg-[#11110f] px-6 py-6 text-[#f4eadb] shadow-2xl transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Navigation</h2>
+        <div className="flex items-center justify-between border-b border-white/10 pb-5">
+          <div>
+            <p className="text-[0.66rem] uppercase tracking-[0.3em] text-[#ff9a72] [font-family:var(--font-mono)]">
+              Navigate
+            </p>
+            <p className="mt-3 text-xl font-semibold tracking-[-0.04em]">
+              James Coppinger
+            </p>
+          </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-            aria-label="Close menu"
+            className="inline-flex h-11 w-11 items-center justify-center border border-white/10 text-[#f4eadb] transition-colors duration-200 hover:border-[#ff7a45] hover:text-[#ff7a45]"
+            aria-label="Close navigation"
           >
-            <X size={24} />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        <nav className="flex-1 p-4 overflow-y-auto">
-          <Link
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Home size={20} />
-            <span className="font-medium">Home</span>
-          </Link>
-
-          {/* Demo Links Start */}
-
-          {/* Demo Links End */}
+        <nav className="flex flex-1 flex-col gap-2 py-8">
+          {navigation.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="border border-white/10 px-4 py-4 text-lg font-medium transition-colors duration-200 hover:border-[#ff7a45] hover:text-[#ff7a45]"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
+
+        <a
+          href="https://github.com/JJCopp"
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => setIsOpen(false)}
+          className="inline-flex items-center justify-center gap-2 bg-[#ff7a45] px-5 py-3 text-sm font-semibold text-[#11110f]"
+        >
+          Open GitHub
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
       </aside>
     </>
   )
