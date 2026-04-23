@@ -49,7 +49,7 @@ export default function Header() {
               href="https://github.com/JJCopp"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#11110f] px-5 py-3 text-sm font-semibold text-[#f4eadb] transition-transform duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-[#0e0e0c] px-5 py-3 text-sm font-semibold text-white shadow-[0_6px_18px_rgba(14,14,12,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1d1c19]"
             >
               Open GitHub
               <ArrowUpRight className="h-4 w-4" />
