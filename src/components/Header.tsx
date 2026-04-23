@@ -25,7 +25,7 @@ export default function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
           <a href="#top" className="min-w-0">
             <span className="block text-[0.66rem] font-semibold uppercase tracking-[0.34em] text-[#7c6655] [font-family:var(--font-mono)]">
-              Phoenix / Product Engineer
+              Phoenix / Hardware · Mobile · Web
             </span>
             <span className="mt-2 block text-[1.08rem] leading-none font-semibold tracking-[-0.05em] text-[#11110f] sm:text-[1.16rem]">
               James <span className="text-[#d64d1c]">Coppinger</span>

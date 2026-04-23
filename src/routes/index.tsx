@@ -84,10 +84,10 @@ type ContactLink = {
 
 const heroContent = {
   eyebrow: 'Phoenix, AZ — Available for new work',
-  headline: 'Product engineering',
-  headlineAccent: 'with real-world instincts.',
+  headline: 'Hardware, mobile, and web —',
+  headlineAccent: 'built with real-world instincts.',
   body:
-    'I build mobile and web products that feel resolved on the surface and stay calm under the integrations, state, and edge cases that usually break them.',
+    'I build across mechanical, hardware, mobile, and web — products and systems that feel resolved on the surface and stay calm under the integrations, state, and edge cases that usually break them.',
   links: [
     { href: '#work', label: 'See flagship work' },
     {
@@ -102,11 +102,15 @@ const heroContent = {
     'Expo',
     'TypeScript',
     'Astro',
-    'Tailwind',
     'Cloudflare',
     'Stripe',
-    'Clerk',
     'TanStack',
+    'Robotics',
+    'CAD / SolidWorks',
+    'Mechanical design',
+    'Prototyping',
+    'Embedded systems',
+    'Automation',
   ],
 }
 
@@ -469,29 +473,21 @@ function App() {
     <main id="top" className="overflow-x-hidden pb-20">
       <section className="relative px-6 pb-20 pt-16 lg:px-8 lg:pb-28 lg:pt-24">
         <div className="mx-auto max-w-7xl">
-          <div
-            className="flex animate-[fade-up_700ms_ease-out_forwards] items-center gap-3 opacity-0"
-          >
+          <div className="flex items-center gap-3">
             <span className="hero-status-dot" aria-hidden="true" />
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-[#5c5142] [font-family:var(--font-mono)]">
               {heroContent.eyebrow}
             </p>
           </div>
 
-          <h1
-            className="display mt-10 animate-[fade-up_800ms_ease-out_forwards] text-[3.6rem] font-semibold text-[#0e0e0c] opacity-0 sm:text-[5.4rem] lg:text-[7rem] xl:text-[8.4rem]"
-            style={{ animationDelay: '80ms' }}
-          >
+          <h1 className="display mt-8 text-[3.4rem] font-semibold text-[#0e0e0c] sm:text-[5rem] lg:text-[6.4rem] xl:text-[7.6rem]">
             <span className="block">{heroContent.headline}</span>
             <span className="block text-[#0e0e0c]/55">
               {heroContent.headlineAccent}
             </span>
           </h1>
 
-          <div
-            className="mt-10 grid animate-[fade-up_800ms_ease-out_forwards] gap-10 opacity-0 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
-            style={{ animationDelay: '180ms' }}
-          >
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <p className="max-w-2xl text-lg leading-[1.55] text-[#3d342b] sm:text-xl">
               {heroContent.body}
             </p>
@@ -505,8 +501,8 @@ function App() {
                   rel={link.external ? 'noreferrer' : undefined}
                   className={
                     index === 0
-                      ? 'group inline-flex items-center gap-2 rounded-full bg-[#0e0e0c] px-6 py-3.5 text-sm font-medium text-[#f5ecdd] transition-all duration-200 hover:bg-[#1d1c19]'
-                      : 'group inline-flex items-center gap-2 rounded-full border border-black/15 bg-transparent px-6 py-3.5 text-sm font-medium text-[#0e0e0c] transition-all duration-200 hover:border-[#0e0e0c]'
+                      ? 'group inline-flex items-center gap-2 rounded-full bg-[#0e0e0c] px-7 py-4 text-[0.95rem] font-semibold text-white shadow-[0_8px_24px_rgba(14,14,12,0.18)] transition-all duration-200 hover:bg-[#1d1c19] hover:shadow-[0_10px_28px_rgba(14,14,12,0.24)]'
+                      : 'group inline-flex items-center gap-2 rounded-full border border-[#0e0e0c]/25 bg-white/60 px-7 py-4 text-[0.95rem] font-semibold text-[#0e0e0c] transition-all duration-200 hover:border-[#0e0e0c] hover:bg-white'
                   }
                 >
                   {link.label}
@@ -520,10 +516,7 @@ function App() {
             </div>
           </div>
 
-          <div
-            className="mt-16 animate-[fade-up_900ms_ease-out_forwards] opacity-0"
-            style={{ animationDelay: '280ms' }}
-          >
+          <div className="mt-14">
             <div className="flex items-center gap-6 border-t border-black/10 pt-6">
               <p className="shrink-0 text-[0.66rem] font-medium uppercase tracking-[0.3em] text-[#7c6c5b] [font-family:var(--font-mono)]">
                 Working with
